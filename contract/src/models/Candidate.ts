@@ -1,0 +1,76 @@
+
+'use strict';
+
+import { PoliticalParty } from "./PoliticalParty";
+
+export class Candidate {
+
+    id:string; 
+    candidateName:string;
+    politicalParty:PoliticalParty ;
+    description :any;
+    type:any;
+    imageUrl :string;
+    count:number;
+    
+   
+    __isContract:any;
+
+  constructor(id:string ,type:any, politicalParty:PoliticalParty, description:string,imageUrl:string) {
+
+
+      this.id = id;
+     this.type=type;
+      this.politicalParty = politicalParty;
+      this.description = description;
+      this.imageUrl=imageUrl;
+      this.count = 0;
+      this.type = 'votableItem';
+      
+      if (this.__isContract) {
+        delete this.__isContract;
+      }
+      
+      return this;
+
+
+  }
+
+  /**
+   *
+   * validateVoter
+   *
+   * check for valid ID card - stateID or drivers License.
+   *  
+   * @param voterId - an array of choices 
+   * @returns - yes if valid Voter, no if invalid
+   */
+  async validateVoter(voterId) {
+    //VoterId error checking here, i.e. check if valid drivers License, or state ID
+    if (voterId) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   *
+   * validateRegistrar
+   *
+   * check for valid registrarId, should be cross checked with government
+   *  
+   * @param voterId - an array of choices 
+   * @returns - yes if valid Voter, no if invalid
+   */
+  async validateRegistrar(registrarId) {
+
+    //registrarId error checking here, i.e. check if valid drivers License, or state ID
+    if (registrarId) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+}
